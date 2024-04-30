@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\USER\\Space ToUR\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E2495701-2E6C-80E8-D38B-FCBCB618E9B3}|Assembly-CSharp.csproj|c:\\users\\user\\space tour\\assets\\scripts\\heart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2495701-2E6C-80E8-D38B-FCBCB618E9B3}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2495701-2E6C-80E8-D38B-FCBCB618E9B3}|Assembly-CSharp.csproj|C:\\Users\\USER\\Space ToUR\\assets\\scripts\\playermovments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2495701-2E6C-80E8-D38B-FCBCB618E9B3}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playermovments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2495701-2E6C-80E8-D38B-FCBCB618E9B3}|Assembly-CSharp.csproj|C:\\Users\\USER\\Space ToUR\\assets\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2495701-2E6C-80E8-D38B-FCBCB618E9B3}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2495701-2E6C-80E8-D38B-FCBCB618E9B3}|Assembly-CSharp.csproj|C:\\Users\\USER\\Space ToUR\\assets\\scripts\\enemycollision.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2495701-2E6C-80E8-D38B-FCBCB618E9B3}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemycollision.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Heart.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Space ToUR\\Assets\\Scripts\\Heart.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Heart.cs",
+              "ToolTip": "C:\\Users\\USER\\Space ToUR\\Assets\\Scripts\\Heart.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Heart.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-30T19:36:50.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PlayerMovments.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Space ToUR\\Assets\\Scripts\\PlayerMovments.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerMovments.cs",
+              "ToolTip": "C:\\Users\\USER\\Space ToUR\\Assets\\Scripts\\PlayerMovments.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerMovments.cs",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAgwCYAAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-30T18:57:54.95Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Space ToUR\\Assets\\Scripts\\Player.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player.cs",
+              "ToolTip": "C:\\Users\\USER\\Space ToUR\\Assets\\Scripts\\Player.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAwB0AAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-30T18:37:19.799Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EnemyCollision.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Space ToUR\\Assets\\Scripts\\EnemyCollision.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyCollision.cs",
+              "ToolTip": "C:\\Users\\USER\\Space ToUR\\Assets\\Scripts\\EnemyCollision.cs",
+              "RelativeToolTip": "Assets\\Scripts\\EnemyCollision.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-30T18:15:03.572Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
