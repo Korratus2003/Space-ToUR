@@ -6,16 +6,25 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private int health = 100;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject[] guns;
+    private float lastFireTime;
+    public float fireCooldown = 0.5f;
+
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            if (Time.time - lastFireTime > fireCooldown)
+            {
+                foreach (var g in guns)
+                {
+                    g.GetComponent<Gun>().Fire();
+                }
+                lastFireTime = Time.time;
+            }
+        }
     }
 
     public void IncreseHealth(int health)

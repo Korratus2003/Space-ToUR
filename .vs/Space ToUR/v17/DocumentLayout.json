@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\USER\\Space ToUR\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E2495701-2E6C-80E8-D38B-FCBCB618E9B3}|Assembly-CSharp.csproj|c:\\users\\user\\space tour\\assets\\scripts\\heart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E2495701-2E6C-80E8-D38B-FCBCB618E9B3}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E2495701-2E6C-80E8-D38B-FCBCB618E9B3}|Assembly-CSharp.csproj|c:\\users\\user\\space tour\\assets\\scripts\\ammo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2495701-2E6C-80E8-D38B-FCBCB618E9B3}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ammo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E2495701-2E6C-80E8-D38B-FCBCB618E9B3}|Assembly-CSharp.csproj|C:\\Users\\USER\\Space ToUR\\assets\\scripts\\playermovments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -15,8 +15,16 @@
       "RelativeMoniker": "D:0:0:{E2495701-2E6C-80E8-D38B-FCBCB618E9B3}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{E2495701-2E6C-80E8-D38B-FCBCB618E9B3}|Assembly-CSharp.csproj|c:\\users\\user\\space tour\\assets\\scripts\\gun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2495701-2E6C-80E8-D38B-FCBCB618E9B3}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E2495701-2E6C-80E8-D38B-FCBCB618E9B3}|Assembly-CSharp.csproj|C:\\Users\\USER\\Space ToUR\\assets\\scripts\\enemycollision.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E2495701-2E6C-80E8-D38B-FCBCB618E9B3}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemycollision.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2495701-2E6C-80E8-D38B-FCBCB618E9B3}|Assembly-CSharp.csproj|C:\\Users\\USER\\Space ToUR\\assets\\scripts\\heart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2495701-2E6C-80E8-D38B-FCBCB618E9B3}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\heart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,6 +39,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Ammo.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Space ToUR\\Assets\\Scripts\\Ammo.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Ammo.cs",
+              "ToolTip": "C:\\Users\\USER\\Space ToUR\\Assets\\Scripts\\Ammo.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Ammo.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-01T11:40:49.703Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Gun.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Space ToUR\\Assets\\Scripts\\Gun.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Gun.cs",
+              "ToolTip": "C:\\Users\\USER\\Space ToUR\\Assets\\Scripts\\Gun.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Gun.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-01T11:29:56.011Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Heart.cs",
               "DocumentMoniker": "C:\\Users\\USER\\Space ToUR\\Assets\\Scripts\\Heart.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Heart.cs",
@@ -38,8 +72,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Heart.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-30T19:36:50.296Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-30T19:36:50.296Z"
             },
             {
               "$type": "Document",
@@ -49,7 +82,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerMovments.cs",
               "ToolTip": "C:\\Users\\USER\\Space ToUR\\Assets\\Scripts\\PlayerMovments.cs",
               "RelativeToolTip": "Assets\\Scripts\\PlayerMovments.cs",
-              "ViewState": "AQIAAB0AAAAAAAAAAAAgwCYAAAA2AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACoAAABAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-30T18:57:54.95Z",
               "EditorCaption": ""
@@ -62,14 +95,14 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player.cs",
               "ToolTip": "C:\\Users\\USER\\Space ToUR\\Assets\\Scripts\\Player.cs",
               "RelativeToolTip": "Assets\\Scripts\\Player.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAwB0AAAAfAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAwwAsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-30T18:37:19.799Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "EnemyCollision.cs",
               "DocumentMoniker": "C:\\Users\\USER\\Space ToUR\\Assets\\Scripts\\EnemyCollision.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyCollision.cs",
@@ -77,8 +110,7 @@
               "RelativeToolTip": "Assets\\Scripts\\EnemyCollision.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-30T18:15:03.572Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-30T18:15:03.572Z"
             }
           ]
         }
