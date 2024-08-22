@@ -3,64 +3,68 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System;
-using UnityEngine.Windows;
+using TMPro;
 
 public class LvlController : MonoBehaviour
 {
-    private string relativeFilePath = "Resources/levels/";
-    private String actualLevel;
-    private string filePath;
+    private string relativeFilePath = "Levels/";
+    private string actualLevel;
     private GameObject[] Spawners;
 
     void Start()
     {
         actualLevel = PlayerPrefs.GetString("PlayerLevel");
-        filePath = Path.Combine(Application.dataPath, (relativeFilePath + actualLevel + ".txt"));
-        Spawners = InstantinateSpawners(ReadMaxLength(filePath));
-        StartCoroutine(ReadFile(filePath));
+        TextAsset levelFile = Resources.Load<TextAsset>(relativeFilePath + actualLevel);
+        if (levelFile != null)
+        {
+            Spawners = InstantinateSpawners(ReadMaxLength(levelFile.text));
+            StartCoroutine(ReadFile(levelFile.text));
+        }
+        else
+        {
+            Debug.LogError("Nie znaleziono pliku poziomu: " + actualLevel);
+        }
         Debug.Log(actualLevel);
     }
 
-    IEnumerator ReadFile(string filePath)
+    IEnumerator ReadFile(string fileContent)
     {
-        
-            using (StreamReader sr = new StreamReader(filePath))
+        using (StringReader sr = new StringReader(fileContent))
+        {
+            string line;
+            int timeout = 1;
+
+            int i = 0;
+            while ((line = sr.ReadLine()) != null)
             {
-                string line;
-                int timeout = 1;    
-
-                int i = 0;
-                while ((line = sr.ReadLine()) != null)
+                string[] parts = line.Split('>');
+                if (parts.Length > 1)
                 {
-                    string[] parts = line.Split('>');
-                    if (parts.Length > 1)
+                    string before = parts[0].Trim();
+                    string after = parts[1].Trim();
+
+                    Debug.Log("Przeciwnicy: " + before + " timeout:" + after);
+
+                    string[] numbers = before.Split(' ');
+
+                    foreach (string number in numbers)
                     {
-                        string before = parts[0].Trim();
-                        string after = parts[1].Trim();
-                        
-                        Debug.Log("Przeciwnicy: " + before + " timeout:" + after);
-
-                        string[] numbers = before.Split(' ');
-
-                        foreach (string number in numbers)
-                        {
-                            int num = int.Parse(number);
-                            Spawners[i].GetComponent<EnemySpawner>().InstantinateEnemy(num);
+                        int num = int.Parse(number);
+                        Spawners[i].GetComponent<EnemySpawner>().InstantinateEnemy(num);
                         i++;
-                        }
-                        i = 0;
-                        timeout = int.Parse(after);
                     }
-                    yield return new WaitForSeconds(timeout);
+                    i = 0;
+                    timeout = int.Parse(after);
                 }
+                yield return new WaitForSeconds(timeout);
             }
-        
+        }
     }
 
-    int ReadMaxLength(string filePath)
+    int ReadMaxLength(string fileContent)
     {
         int maxLength = 0;
-        using (StreamReader sr = new StreamReader(filePath))
+        using (StringReader sr = new StringReader(fileContent))
         {
             string line;
             while ((line = sr.ReadLine()) != null)

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 using TMPro;
 
@@ -9,13 +8,19 @@ public class LvlHolder : MonoBehaviour
     private TextMeshProUGUI textMeshPro;
     private int actualLevel = 1;
     private int txtFileCount;
+
     void Start()
     {
-        string folderPath = Application.dataPath + "/Resources/Levels";
-        txtFileCount = Directory.GetFiles(folderPath, "*.txt", SearchOption.TopDirectoryOnly).Length;
+        // £adowanie wszystkich plików tekstowych z folderu Resources/Levels
+        TextAsset[] textFiles = Resources.LoadAll<TextAsset>("Levels");
+        txtFileCount = textFiles.Length;
         Debug.Log($"Liczba plików .txt w folderze: {txtFileCount}");
 
         textMeshPro = this.GetComponent<TextMeshProUGUI>();
+        if (textMeshPro == null)
+        {
+            Debug.LogError("TextMeshProUGUI nie zosta³ znaleziony!");
+        }
         PrintLevel();
     }
 
@@ -25,12 +30,11 @@ public class LvlHolder : MonoBehaviour
             actualLevel++;
         Debug.Log(actualLevel);
         PrintLevel();
-
     }
 
     public void decrease()
     {
-        if(actualLevel > 1)
+        if (actualLevel > 1)
             actualLevel--;
         Debug.Log(actualLevel);
         PrintLevel();
@@ -46,4 +50,3 @@ public class LvlHolder : MonoBehaviour
         return actualLevel.ToString();
     }
 }
-
