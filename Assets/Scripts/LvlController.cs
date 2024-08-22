@@ -10,6 +10,7 @@ public class LvlController : MonoBehaviour
     private string relativeFilePath = "Levels/";
     private string actualLevel;
     private GameObject[] Spawners;
+    private Player Player;
 
     void Start()
     {
@@ -24,7 +25,9 @@ public class LvlController : MonoBehaviour
         {
             Debug.LogError("Nie znaleziono pliku poziomu: " + actualLevel);
         }
-        Debug.Log(actualLevel);
+
+        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+
     }
 
     IEnumerator ReadFile(string fileContent)
@@ -43,14 +46,21 @@ public class LvlController : MonoBehaviour
                     string before = parts[0].Trim();
                     string after = parts[1].Trim();
 
-                    Debug.Log("Przeciwnicy: " + before + " timeout:" + after);
 
-                    string[] numbers = before.Split(' ');
+                    string[] IDs = before.Split(' ');
 
-                    foreach (string number in numbers)
+                    foreach (string ID in IDs)
                     {
-                        int num = int.Parse(number);
-                        Spawners[i].GetComponent<EnemySpawner>().InstantinateEnemy(num);
+                        int num;
+
+                        if (int.TryParse(ID, out num)) { 
+                        Spawners[i].GetComponent<EnemySpawner>().InstantiateEnemy(num); 
+                        }
+                        else
+                        {
+                        Debug.Log(ID);
+                        }
+                        
                         i++;
                     }
                     i = 0;
@@ -103,13 +113,20 @@ public class LvlController : MonoBehaviour
 
         for (int i = 0; i < n; i++)
         {
-            GameObject spawner = new GameObject("EnemySpawner" + (i + 1));
-            spawner.transform.position = new Vector3(((i + 1) * distance - 8f), 0, 14);
+            GameObject spawner = new GameObject("Spawner" + (i + 1));
             spawner.transform.SetParent(this.transform);
+            spawner.transform.localPosition = new Vector3(((i + 1) * distance - 8f), 0, 14);
+            spawner.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles);
             spawner.AddComponent<EnemySpawner>();
             spawners[i] = spawner;
         }
 
         return spawners;
+    }
+
+    public void Rotate(Quaternion rotation)
+    {
+        this.transform.rotation = rotation;
+        Player.transform.rotation = rotation;
     }
 }

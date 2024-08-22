@@ -5,11 +5,11 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
 
-    public void InstantinateEnemy(int enemyID)
+    public void InstantiateEnemy(int enemyID)
     {
-        Debug.Log("Enemy"+enemyID);
         GameObject enemy = Resources.Load<GameObject>(("Objects/Enemy" + enemyID));
         enemy.transform.position = this.transform.position;
+        enemy.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles);
         Instantiate(enemy);
         
     } 
