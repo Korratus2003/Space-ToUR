@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
 
     public void InstantiateEnemy(int enemyID)
@@ -13,4 +13,12 @@ public class EnemySpawner : MonoBehaviour
         Instantiate(enemy);
         
     } 
+
+    public void InstantiateHealth()
+    {
+        GameObject health = Resources.Load<GameObject>(("Objects/Health"));
+        health.transform.position = this.transform.position;
+        health.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles);
+        Instantiate(health);
+    }
 }

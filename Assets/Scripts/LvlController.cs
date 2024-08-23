@@ -4,6 +4,8 @@ using UnityEngine;
 using System.IO;
 using System;
 using TMPro;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class LvlController : MonoBehaviour
 {
@@ -11,6 +13,12 @@ public class LvlController : MonoBehaviour
     private string actualLevel;
     private GameObject[] Spawners;
     private Player Player;
+    private float points = 0;
+
+
+    public GameObject Background;
+    public GameObject PauseMenu;
+    public GameObject HUDController;
 
     void Start()
     {
@@ -19,7 +27,7 @@ public class LvlController : MonoBehaviour
         if (levelFile != null)
         {
             Spawners = InstantinateSpawners(ReadMaxLength(levelFile.text));
-            StartCoroutine(ReadFile(levelFile.text));
+            StartCoroutine(ReadLevel(levelFile.text));
         }
         else
         {
@@ -28,9 +36,15 @@ public class LvlController : MonoBehaviour
 
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
+        Texture2D backgroundTexture = Resources.Load<Texture2D>(($"Backgrounds/Background{actualLevel}"));
+        if (backgroundTexture != null)
+            Background.transform.GetChild(0).GetComponent<RawImage>().texture = backgroundTexture;
+
+        HUDController.GetComponent<HUDController>().UpdatePoints(points);
+
     }
 
-    IEnumerator ReadFile(string fileContent)
+    IEnumerator ReadLevel(string fileContent)
     {
         using (StringReader sr = new StringReader(fileContent))
         {
@@ -54,11 +68,21 @@ public class LvlController : MonoBehaviour
                         int num;
 
                         if (int.TryParse(ID, out num)) { 
-                        Spawners[i].GetComponent<EnemySpawner>().InstantiateEnemy(num); 
+                        Spawners[i].GetComponent<Spawner>().InstantiateEnemy(num); 
                         }
                         else
                         {
-                        Debug.Log(ID);
+                            switch (ID.ToUpper().ToCharArray()[0])
+                            {
+                                case 'N': Debug.Log("N to bêdzie umowne nic"); break;
+                                case 'H':
+                                    Spawners[i].GetComponent<Spawner>().InstantiateHealth();
+                                    break;
+
+                                default:
+                                    Debug.Log("Niezanana litera");
+                                    break;
+                            }
                         }
                         
                         i++;
@@ -117,7 +141,7 @@ public class LvlController : MonoBehaviour
             spawner.transform.SetParent(this.transform);
             spawner.transform.localPosition = new Vector3(((i + 1) * distance - 8f), 0, 14);
             spawner.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles);
-            spawner.AddComponent<EnemySpawner>();
+            spawner.AddComponent<Spawner>();
             spawners[i] = spawner;
         }
 
@@ -129,4 +153,28 @@ public class LvlController : MonoBehaviour
         this.transform.rotation = rotation;
         Player.transform.rotation = rotation;
     }
+
+
+    public void showWarunek()
+    {
+        PauseMenu.transform.GetChild(1).gameObject.SetActive(true);
+    }
+
+    public float GetPoints()
+    {
+        return points;
+    }
+
+    public void AddPoints(float points)
+    {
+        this.points += points;
+        HUDController.GetComponent<HUDController>().UpdatePoints(points);
+    }
+
+    public void SetPoints(float points)
+    {
+        this.points = points;
+        HUDController.GetComponent<HUDController>().UpdatePoints(points);
+    }
+
 }

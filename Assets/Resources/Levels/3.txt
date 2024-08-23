@@ -1,0 +1,27 @@
+N N 0 0 0 N N N N N N N N N N N >5
+N N N N N N 1 1 N N N N N N N N >5
+N N N N N 2 2 2 N N N N N N N N >6
+N N N N N N 3 3 N N N N N N N N >6
+N N 0 N N N N N N N N 0 N N N N >4
+N N N 0 N N N N N N N 0 N N N N >4
+N N N N 1 N N N N N N N 1 N N N >3
+N N N N N N 2 N N N N N 2 N N N >3
+N 0 0 0 0 0 0 0 H 0 0 0 0 0 0 0 >7
+N 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 >7
+N N N 2 2 2 2 2 2 2 2 2 2 N N N >6
+N N N N N N N 3 3 3 3 3 3 N N N >6
+N N 0 N N 0 N N 0 N N 0 N N 0 N >5
+N N N 1 N N 1 N N 1 N N 1 N N N >5
+N N N N N 2 N N N 2 N N N 2 N N >4
+N N N N N N 3 N N N 3 N N N 3 N >4
+0 0 0 N N N N N N N 0 0 0 N N N >6
+1 1 1 1 N N N N N N 1 1 1 1 N N >6
+N N N 2 2 2 N N N 2 2 2 N N N N >5
+N N N N 3 3 3 3 3 3 3 N N N N N >5
+N N N N N N N N N N N N N N N 2 >5
+N 0 N N 0 N N 0 N N 0 N N 0 N N >5
+N N 1 N 1 N 1 N 1 N 1 N 1 N 1 N >4
+N N N 2 2 2 2 2 2 2 2 2 N N N N >6
+0 N 0 N 0 N 0 N 0 N 0 N 0 N 0 N >7
+N N N N 3 3 3 3 3 3 3 N N N N N >8
+

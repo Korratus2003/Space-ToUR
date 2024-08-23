@@ -1,32 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
-    public float moveSpeed = 2f;
-    public float mouseSensitivity = 2f;
+    public float moveSpeed = 10f;
+    public float mouseSensitivity = 1f;
     private float health = 100;
-
+    public GameObject HUDController;
+    Vector3 previousPosition; // u¿ywane do nachylenia dziecka
 
     // Start is called before the first frame update
     void Start()
     {
-        this.transform.position = new Vector3(0, 1, -4);
+        HUDController.GetComponent<HUDController>().UpdateHealth(GetHealth());
+        previousPosition = transform.GetChild(0).position;
+        this.transform.position = new Vector3(0, 0, -4);
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
         Move();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        
-
+        Tilt();
     }
 
 
@@ -34,8 +38,8 @@ public class Player : MonoBehaviour
     {
 
         //pobranie ruchów myszy
-        float moveHorizontal = Input.GetAxis("Mouse X") * 8f * mouseSensitivity;
-        float moveVertical = Input.GetAxis("Mouse Y") * 8f * mouseSensitivity;
+        float moveHorizontal = Input.GetAxis("Mouse X") * 2f * mouseSensitivity;
+        float moveVertical = Input.GetAxis("Mouse Y") * 2f * mouseSensitivity;
 
         //ruch
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
@@ -48,20 +52,43 @@ public class Player : MonoBehaviour
         this.transform.position = new Vector3(clampedX, this.transform.position.y, clampedZ);
 
 
-        //nachylenie
-        //float tiltAngle = 30.0f;
-        //if (movement != Vector3.zero)
-        //{
-        //    float tilt = movement.x * tiltAngle;
-        //    transform.GetChild(0).localRotation = Quaternion.Euler(0, 0, -tilt);
-        //}
-        //else
-        //{
-        //    transform.GetChild(0).localRotation = Quaternion.Euler(0, 0, 0);
-        //}
-        //Quaternion currentRotation = transform.GetChild(0).transform.localRotation;
-        //transform.GetChild(0).transform.localRotation = Quaternion.Euler(0, 0, currentRotation.eulerAngles.z);
     }
+
+    private void Tilt()
+    {
+
+        // Oblicz wektor ruchu dziecka
+        Vector3 childMovement = transform.GetChild(0).position - previousPosition;
+
+        // Zaktualizuj poprzedni¹ pozycjê
+        previousPosition = transform.GetChild(0).position;
+
+        // Pobierz lokalny przód dziecka
+        Vector3 childRight = transform.GetChild(0).right;
+
+        // SprawdŸ, czy dziecko porusza siê w boki
+        float dotProductRight = Vector3.Dot(childRight, childMovement.normalized);
+        float dotProductLeft = Vector3.Dot(-childRight, childMovement.normalized);
+
+        float tiltAngle = 30f;
+        Quaternion targetRotation = Quaternion.Euler(0, 0, 0);
+
+        if (dotProductRight > 0.5f)
+        {
+            targetRotation = Quaternion.Euler(0, 0, -tiltAngle);
+        }
+        else if (dotProductLeft > 0.5f)
+        {
+            targetRotation = Quaternion.Euler(0, 0, tiltAngle);
+        }
+
+        // Interpolacja miêdzy aktualn¹ a docelow¹ rotacj¹
+        transform.GetChild(0).localRotation = Quaternion.Lerp(transform.GetChild(0).localRotation, targetRotation, Time.deltaTime * 10f);
+
+    }
+
+
+
 
     public float GetHealth()
     {
@@ -70,14 +97,25 @@ public class Player : MonoBehaviour
 
     public void IncreaseHealth(float hp) {
         health += hp;
+        HUDController.GetComponent<HUDController>().UpdateHealth(GetHealth());
     }
     public void DecreaseHealth(float hp) {
     health -= hp;
+    HUDController.GetComponent<HUDController>().UpdateHealth(GetHealth());
         if (health <= 0)
         {
-            Destroy(this.gameObject);
-            //zrób coœ jeszcze
+            this.gameObject.SetActive(false);
+            Time.timeScale = 0;
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<LvlController>().showWarunek();
+
         }
+
+    }
+
+    public void Respawn()
+    {
+        health = 100;
+        HUDController.GetComponent<HUDController>().UpdateHealth(GetHealth());
     }
 
 
@@ -88,4 +126,5 @@ public class Player : MonoBehaviour
             Destroy(other.gameObject); 
         }
     }
+
 }

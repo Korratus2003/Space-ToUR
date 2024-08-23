@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class ButtonController : MonoBehaviour
+public class MenuController : MonoBehaviour
 {
     public LvlHolder LvlHolder;
+    public GameObject Background;
 
     public void klyk()
     {
@@ -26,5 +28,10 @@ public class ButtonController : MonoBehaviour
     {
         PlayerPrefs.SetString("PlayerLevel", LvlHolder.GetLevel());
         SceneManager.LoadScene("lvl");
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }
