@@ -1,0 +1,53 @@
+>6
+!-90>10
+N N N N 0 N N N N N 0>5
+N N N N 0 0 0 N N N N>5
+N N N 0 0 0 0 0 N N N>5
+N N 0 0 0 0 0 0 0 N N>5
+N 0 0 0 0 0 0 0 0 0 N>5
+0 0 0 0 0 0 0 0 0 0 0>10
+N 0 N 0 N 0 N 0 N 0 N>5
+0 N 0 N 0 N 0 N 0 N 0>5
+N 0 N 0 N 0 N 0 N 0 N>5
+0 0 0 0 0 0 0 0 0 0 0>5
+0 N N N N N N N N N 0>5
+0 N N N N H N N N N 0>5
+0 0 0 0 0 0 0 0 0 0 0>5
+N 0 N 0 N 0 N 0 N 0 N>15
+0 N N N N N N N N N 0>5
+N 0 N N N N N N N 0 N>5
+N N 0 N N N N N 0 N N>5
+N N N 0 N N N 0 N N N>5
+N N N N 0 N 0 N N N N>5
+N N N N N 0 N N N N N>5
+N N N N 0 N 0 N N N N>5
+N N N 0 N N N 0 N N N>5
+N N 0 N N N N N 0 N N>5
+N 0 N N N N N N N 0 N>5
+0 N N N N N N N N N 0>8
+!180>15
+N 0 N 0 N 0 N 0 N 0 N>8
+0 N 0 N 0 N 0 N 0 N 0>8
+0 N 0 N 0 N 0 N 0 N 0>8
+0 N 0 N 0 N 0 N 0 N 0>8
+N 0 N 0 N 0 N 0 N 0 N>8
+0 0 0 0 0 0 0 0 0 0 0>5
+0 0 0 0 0 0 0 0 0 0 0>5
+0 0 0 0 0 0 0 0 0 0 0>5
+0 0 0 0 0 0 0 0 0 0 0>5
+0 0 0 0 0 0 0 0 0 0 0>5
+0 0 0 0 0 0 0 0 0 0 0>5
+N 0 N 0 N 0 N 0 N 0 N>5
+N N 0 N 0 N 0 N 0 N N>5
+N N N 0 N 0 N 0 N N N>5
+N N N N 0 N 0 N N N N>5
+N N N N N 0 N N N N N>7
+!270>20
+0 0 0 0 0 0 0 0 0 0 0>8
+0 0 N N N N N N N 0 0>8
+0 N N N N N N N N N 0>8
+0 0 0 N N 0 N N 0 0 0>8
+0 0 0 N 0 0 0 N 0 0 0>8
+0 N N 0 0 0 0 0 N N 0>8
+0 0 N N 0 0 0 0 N 0 0>8
+0 0 0 0 0 0 0 0 0 0 0

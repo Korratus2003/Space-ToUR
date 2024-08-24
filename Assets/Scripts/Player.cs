@@ -8,9 +8,12 @@ using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
+    private float health = 100;
+    private float rotationY;
+
+
     public float moveSpeed = 10f;
     public float mouseSensitivity = 1f;
-    private float health = 100;
     public GameObject HUDController;
     Vector3 previousPosition; // u¿ywane do nachylenia dziecka
 
@@ -20,6 +23,7 @@ public class Player : MonoBehaviour
         HUDController.GetComponent<HUDController>().UpdateHealth(GetHealth());
         previousPosition = transform.GetChild(0).position;
         this.transform.position = new Vector3(0, 0, -4);
+        this.transform.rotation = Quaternion.Euler(0,0,0);
     }
 
     // Update is called once per frame
@@ -51,6 +55,8 @@ public class Player : MonoBehaviour
 
         this.transform.position = new Vector3(clampedX, this.transform.position.y, clampedZ);
 
+        //rotacja
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(transform.rotation.x, rotationY , transform.rotation.y), Time.deltaTime * 0.4f);
 
     }
 
@@ -85,6 +91,11 @@ public class Player : MonoBehaviour
         // Interpolacja miêdzy aktualn¹ a docelow¹ rotacj¹
         transform.GetChild(0).localRotation = Quaternion.Lerp(transform.GetChild(0).localRotation, targetRotation, Time.deltaTime * 10f);
 
+    }
+
+    public void Rotate(float rotationY)
+    {
+        this.rotationY = rotationY;
     }
 
 

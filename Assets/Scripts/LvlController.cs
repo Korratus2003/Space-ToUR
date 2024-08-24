@@ -11,6 +11,7 @@ public class LvlController : MonoBehaviour
 {
     private string relativeFilePath = "Levels/";
     private string actualLevel;
+    private Coroutine FileReadCoroutine;
     private GameObject[] Spawners;
     private Player Player;
     private float points = 0;
@@ -20,21 +21,23 @@ public class LvlController : MonoBehaviour
     public GameObject PauseMenu;
     public GameObject HUDController;
 
+    
     void Start()
     {
+        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         actualLevel = PlayerPrefs.GetString("PlayerLevel");
-        TextAsset levelFile = Resources.Load<TextAsset>(relativeFilePath + actualLevel);
+        TextAsset levelFile = Resources.Load<TextAsset>(relativeFilePath + "lvl"+actualLevel);
         if (levelFile != null)
         {
             Spawners = InstantinateSpawners(ReadMaxLength(levelFile.text));
-            StartCoroutine(ReadLevel(levelFile.text));
+            FileReadCoroutine = StartCoroutine(ReadLevel(levelFile.text));
         }
         else
         {
             Debug.LogError("Nie znaleziono pliku poziomu: " + actualLevel);
         }
 
-        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        
 
         Texture2D backgroundTexture = Resources.Load<Texture2D>(($"Backgrounds/Background{actualLevel}"));
         if (backgroundTexture != null)
@@ -55,45 +58,84 @@ public class LvlController : MonoBehaviour
             while ((line = sr.ReadLine()) != null)
             {
                 string[] parts = line.Split('>');
-                if (parts.Length > 1)
+
+                if (parts.Length == 2)
                 {
+                    
                     string before = parts[0].Trim();
                     string after = parts[1].Trim();
 
-
-                    string[] IDs = before.Split(' ');
-
-                    foreach (string ID in IDs)
+                    // Obs³uga przypadku linii zaczynaj¹cej siê od `!`
+                    if (before.StartsWith('!'))
                     {
-                        int num;
+                        string rotateValueString = before.Substring(1); // Pobranie wartoœci po `!`
+                        int rotateValue;
 
-                        if (int.TryParse(ID, out num)) { 
-                        Spawners[i].GetComponent<Spawner>().InstantiateEnemy(num); 
-                        }
-                        else
+                        if (int.TryParse(rotateValueString, out rotateValue))
                         {
-                            switch (ID.ToUpper().ToCharArray()[0])
-                            {
-                                case 'N': Debug.Log("N to bêdzie umowne nic"); break;
-                                case 'H':
-                                    Spawners[i].GetComponent<Spawner>().InstantiateHealth();
-                                    break;
-
-                                default:
-                                    Debug.Log("Niezanana litera");
-                                    break;
-                            }
+                            Rotate(rotateValue);
                         }
-                        
-                        i++;
+
+                        // Sprawdzenie timeoutu po `>`
+                        if (!int.TryParse(after, out timeout))
+                        {
+                            timeout = 1;
+                        }
                     }
-                    i = 0;
-                    timeout = int.Parse(after);
+                    else
+                    {
+                        string[] IDs = before.Split(' ');
+
+                        foreach (string ID in IDs)
+                        {
+                            if (string.IsNullOrWhiteSpace(ID)) continue;  // Pomiñ puste ID
+
+                            int num;
+                            if (int.TryParse(ID, out num))
+                            {
+                                Spawners[i].GetComponent<Spawner>().InstantiateEnemy(num);
+                            }
+                            else
+                            {
+                                switch (ID.ToUpper().ToCharArray()[0])
+                                {
+                                    case 'N':
+                                        Debug.Log("N to bêdzie umowne nic");
+                                        break;
+                                    case 'H':
+                                        Spawners[i].GetComponent<Spawner>().InstantiateHealth();
+                                        break;
+                                    default:
+                                        Debug.Log("Niezanana litera");
+                                        break;
+                                }
+                            }
+
+                            i++;
+                        }
+                        i = 0;
+
+                        
+                    }
+                    if (!int.TryParse(after, out timeout))
+                    {
+                        StopCoroutine(FileReadCoroutine);
+                    }
                 }
+                else if (parts.Length == 1 && !string.IsNullOrWhiteSpace(parts[0]))
+                {
+                    // Obs³uga przypadku, gdy jest tylko jeden element
+                    if (!int.TryParse(parts[0].Trim(), out timeout))
+                    {
+                        StopCoroutine(FileReadCoroutine);
+                    }
+                }
+
                 yield return new WaitForSeconds(timeout);
             }
         }
     }
+
 
     int ReadMaxLength(string fileContent)
     {
@@ -148,10 +190,11 @@ public class LvlController : MonoBehaviour
         return spawners;
     }
 
-    public void Rotate(Quaternion rotation)
+    public void Rotate(float rotationY)
     {
-        this.transform.rotation = rotation;
-        Player.transform.rotation = rotation;
+        transform.rotation = Quaternion.Euler(transform.rotation.x, rotationY, transform.rotation.z);
+        Player.GetComponent<Player>().Rotate(rotationY);
+        
     }
 
 
