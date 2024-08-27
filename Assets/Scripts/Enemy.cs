@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    private float health = 100f;
     private void Start()
     {
         Destroy(this.gameObject, 60f);
@@ -12,5 +13,13 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.back * Time.deltaTime * 0.4f);
+    }
+
+    public void DecreseHealth(float health)
+    {
+        this.health -= health;
+        if (this.health <= 0)
+            Destroy(this.gameObject);
+        
     }
 }
