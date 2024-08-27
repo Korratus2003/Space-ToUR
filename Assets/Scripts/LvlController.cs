@@ -6,6 +6,7 @@ using System;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using Unity.VisualScripting;
 
 public class LvlController : MonoBehaviour
 {
@@ -36,12 +37,7 @@ public class LvlController : MonoBehaviour
         {
             Debug.LogError("Nie znaleziono pliku poziomu: " + actualLevel);
         }
-
-        
-
-        Texture2D backgroundTexture = Resources.Load<Texture2D>(($"Backgrounds/Background{actualLevel}"));
-        if (backgroundTexture != null)
-            Background.transform.GetChild(0).GetComponent<RawImage>().texture = backgroundTexture;
+        Background.transform.GetChild(0).GetComponent<BackgroundMove>().actualLevel = actualLevel;
 
         HUDController.GetComponent<HUDController>().UpdatePoints(points);
 

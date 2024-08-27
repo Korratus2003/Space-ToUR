@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
         this.transform.position = new Vector3(clampedX, this.transform.position.y, clampedZ);
 
         //rotacja
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(transform.rotation.x, rotationY , transform.rotation.y), Time.deltaTime * 0.4f);
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(transform.rotation.x, rotationY , transform.rotation.y), Time.deltaTime * 5f);
 
     }
 
@@ -133,7 +133,7 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag.Equals("Enemy")) {
-            DecreaseHealth(50f);
+            DecreaseHealth(10f);
             Destroy(other.gameObject); 
         }
     }
