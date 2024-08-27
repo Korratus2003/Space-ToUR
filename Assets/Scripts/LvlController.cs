@@ -207,7 +207,7 @@ public class LvlController : MonoBehaviour
     public void AddPoints(float points)
     {
         this.points += points;
-        HUDController.GetComponent<HUDController>().UpdatePoints(points);
+        HUDController.GetComponent<HUDController>().UpdatePoints(this.points);
     }
 
     public void SetPoints(float points)

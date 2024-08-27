@@ -37,7 +37,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Background:
-        m_Texture: {fileID: 2800000, guid: 90d6dc87d1125be4d8f82db47f348f27, type: 3}
+        m_Texture: {fileID: 2800000, guid: 058ebd294e68aea42b3915dc6e14b813, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -137,7 +137,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _PlayerForward: {r: 0, g: 0.30227256, b: 0, a: 0}
+    - _PlayerForward: {r: 0, g: 0.64140797, b: 0, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _Transform3D: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

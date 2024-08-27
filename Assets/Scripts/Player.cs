@@ -108,6 +108,8 @@ public class Player : MonoBehaviour
 
     public void IncreaseHealth(float hp) {
         health += hp;
+        if (health > 200)
+            health = 200;
         HUDController.GetComponent<HUDController>().UpdateHealth(GetHealth());
     }
     public void DecreaseHealth(float hp) {
